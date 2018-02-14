@@ -78,12 +78,12 @@ renderRetry = () => {
 
 
   static navigationOptions = {
-    title: 'Stardew Valley Mobile Wiki',
+    title: 'Fortnite Mobile Wiki',
   }
   async retryConnection() {
     const catData = await ajax.fetchCategories ();
     //console.log(catData, 'catData');
-    this.setState({ categories: catData.query.pages[4].links });
+    this.setState({ categories: catData.query.pages[1].links });
     LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
     //console.log(this.state.categories, 'categories');
     this.setState({ timeout: false });
@@ -91,8 +91,8 @@ renderRetry = () => {
 
   async componentDidMount() {
     const catData = await ajax.fetchCategories ();
-    //console.log(catData, 'catData');
-    this.setState({ categories: catData.query.pages[4].links });
+    console.log(catData, 'catData');
+    this.setState({ categories: catData.query.pages[1].links });
     // console.log(this.state.categories, 'categories');
 
   }
@@ -109,7 +109,7 @@ renderRetry = () => {
           <View style={styles.head}>
             <Image
               style={styles.welcomeImg}
-              source={require('../img/Cat.gif')}
+              source={require('../img/fortnite.png')}
             />
             <SearchBar searchWiki={this.searchWiki}/>
           </View>
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     margin: 5,
-    backgroundColor: '#0076FF',
+    backgroundColor: '#5856D6',
     padding: 5,
     overflow: 'hidden',
     fontSize: 18,
@@ -190,5 +190,6 @@ const styles = StyleSheet.create({
   welcomeImg: {
     justifyContent: 'flex-start',
     flex: 1,
+    maxWidth: '70%',
   }
 });

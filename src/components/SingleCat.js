@@ -181,12 +181,6 @@ render() {
   const alterNode = (node) => {
     const { name } = node;
 
-    //prepending uri for images
-    if (name === 'img') {
-      //console.log(node.attribs.src);
-      node.attribs.src = 'https://stardewvalleywiki.com/' + node.attribs.src;
-      return node;
-    }
     //removing all inline styles
     if (node.attribs) {
       if (node.attribs.style) {
@@ -194,7 +188,7 @@ render() {
         return node;
       }
     }
-  };
+  }
   if (this.state.hasError) {
     return (
       <View style={styles.container}>
@@ -369,7 +363,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     width: '100%',
-    backgroundColor: '#0076FF',
+    backgroundColor: '#5856D6',
   },
   container: {
     backgroundColor: 'white',
@@ -394,7 +388,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     margin: 5,
-    backgroundColor: '#0076FF',
+    backgroundColor: '#5856D6',
     padding: 5,
     overflow: 'hidden',
     fontSize: 18,

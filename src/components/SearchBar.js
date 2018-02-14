@@ -26,7 +26,7 @@ render() {
   return(
     <TextInput
       style= {styles.input}
-      placeholder= 'Search Stardew Valley Wiki'
+      placeholder= 'Search Fortnite Wiki'
       onChangeText={this.handleChange}
       clearButtonMode={'while-editing'}
       autoCapitalize={'none'}/>
