@@ -1,5 +1,16 @@
 import React from 'react';
-import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Dimensions, FlatList, LayoutAnimation } from 'react-native';
+import {
+  Linking,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView, 
+  TouchableOpacity,
+  Dimensions,
+  FlatList,
+  LayoutAnimation,
+  ActivityIndicator,
+} from 'react-native';
 import ajax from '../ajax';
 import HTML from 'react-native-render-html';
 import { Icon } from 'react-native-elements';
@@ -170,14 +181,16 @@ renderTOC = () => {
 render() {
 
   const alterNode = (node) => {
+    /*
     const { name } = node;
-
     //prepending uri for images
     if (name === 'img') {
       //console.log(node.attribs.src);
       node.attribs.src = 'https://stardewvalleywiki.com/' + node.attribs.src;
       return node;
-    }
+    }*/
+
+
     //removing all inline styles
     if (node.attribs) {
       if (node.attribs.style) {
@@ -325,10 +338,7 @@ render() {
   //if no page to display, show loading screen
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.loadImg}
-        source={require('../img/Dog.gif')}
-      />
+      <ActivityIndicator size="large" color={overrides.list_color} />
       <Text style={styles.loading}>Loading...</Text>
     </View>
   );

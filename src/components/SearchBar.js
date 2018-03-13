@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { TextInput, StyleSheet  } from 'react-native';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
+import overrides from './Overrides';
 
 export default class SearchBar extends Component<{}> {
 
@@ -26,7 +27,7 @@ render() {
   return(
     <TextInput
       style= {styles.input}
-      placeholder= 'Search Stardew Valley Wiki'
+      placeholder= 'Search Fortnite Wiki'
       onChangeText={this.handleChange}
       clearButtonMode={'while-editing'}
       autoCapitalize={'none'}/>
