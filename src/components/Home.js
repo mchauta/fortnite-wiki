@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import ajax from '../ajax';
 import SearchBar from './SearchBar';
+import overrides from './Overrides';
 
 
 export default class Home extends Component<{}> {
@@ -109,7 +110,7 @@ renderRetry = () => {
           <View style={styles.head}>
             <Image
               style={styles.welcomeImg}
-              source={require('../img/fortnite.png')}
+              source={overrides.home_image}
             />
             <SearchBar searchWiki={this.searchWiki}/>
           </View>
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     margin: 5,
-    backgroundColor: '#5856D6',
+    backgroundColor: overrides.list_color,
     padding: 5,
     overflow: 'hidden',
     fontSize: 18,

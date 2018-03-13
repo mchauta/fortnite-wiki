@@ -3,6 +3,7 @@ import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, D
 import ajax from '../ajax';
 import HTML from 'react-native-render-html';
 import { Icon } from 'react-native-elements';
+import overrides from './Overrides';
 
 
 
@@ -16,7 +17,7 @@ class SingleCat extends React.Component {
     data: [],
     coords: [],
     tocData: [],
-    toc:[],
+    toc:[['Back to the top', [0, 0]]],
     showTOC: false,
   };
 
@@ -140,38 +141,28 @@ renderTOCList = (item, index) => {
 
 //render the Table of Contents
 renderTOC = () => {
-  if (this.state.toc.length > 0) {
-
-    return (
-      <View style={styles.head}>
-        <FlatList
-          style={this.toggleHeight()}
-          data={this.state.toc}
-          keyExtractor={(item, index) => index}
-          renderItem={({item, index}) =>
-            <TouchableOpacity onPress={() => this._scrollView.scrollTo({x: item[1][0], y: item[1][1]})}>
-              { this.renderTOCList(item, index) }
-            </TouchableOpacity>
-          }
-        />
-
-        <TouchableOpacity
-          style={styles.tocContainer}
-          onPress={this.toggleTOC}>
-          <Text style={styles.tocButton}> Table of Contents </Text>
-          { this.toggleArrow() }
-        </TouchableOpacity>
-      </View>
-
-    );
-  }
   return (
-    <View
-      style={styles.tocContainer}>
-      <Text style={styles.tocButton}>Table of Contents Loading...</Text>
-    </View>
-  );
+    <View style={styles.head}>
+      <FlatList
+        style={this.toggleHeight()}
+        data={this.state.toc}
+        keyExtractor={(item, index) => index}
+        renderItem={({item, index}) =>
+          <TouchableOpacity onPress={() => this._scrollView.scrollTo({x: item[1][0], y: item[1][1]})}>
+            { this.renderTOCList(item, index) }
+          </TouchableOpacity>
+        }
+      />
 
+      <TouchableOpacity
+        style={styles.tocContainer}
+        onPress={this.toggleTOC}>
+        <Text style={styles.tocButton}> Table of Contents </Text>
+        { this.toggleArrow() }
+      </TouchableOpacity>
+    </View>
+
+  );
 }
 
 
@@ -181,6 +172,12 @@ render() {
   const alterNode = (node) => {
     const { name } = node;
 
+    //prepending uri for images
+    if (name === 'img') {
+      //console.log(node.attribs.src);
+      node.attribs.src = 'https://stardewvalleywiki.com/' + node.attribs.src;
+      return node;
+    }
     //removing all inline styles
     if (node.attribs) {
       if (node.attribs.style) {
@@ -188,7 +185,7 @@ render() {
         return node;
       }
     }
-  }
+  };
   if (this.state.hasError) {
     return (
       <View style={styles.container}>
@@ -363,7 +360,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     width: '100%',
-    backgroundColor: '#5856D6',
+    backgroundColor: overrides.toc_color,
   },
   container: {
     backgroundColor: 'white',
@@ -388,7 +385,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     margin: 5,
-    backgroundColor: '#5856D6',
+    backgroundColor: overrides.toc_color,
     padding: 5,
     overflow: 'hidden',
     fontSize: 18,
@@ -398,7 +395,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     margin: 5,
-    backgroundColor: '#44DB5E',
+    backgroundColor: overrides.toc_top_color,
     padding: 5,
     overflow: 'hidden',
     fontSize: 18,
