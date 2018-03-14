@@ -23,14 +23,11 @@ handleChange = (searchTerm) => {
   });
 };
 
-
-
 render() {
-  const placeholderText = 'Search ' + overrides.title + ' Wiki';
   return(
     <TextInput
       style= {styles.input}
-      placeholder= {placeholderText}
+      placeholder= 'Search Fortnite Wiki'
       onChangeText={this.handleChange}
       clearButtonMode={'while-editing'}
       autoCapitalize={'none'}/>
