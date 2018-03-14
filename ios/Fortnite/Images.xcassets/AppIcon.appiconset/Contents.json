@@ -148,6 +148,10 @@
     {
       "filename" : "Icon-512.png",
       "unassigned" : true
+    },
+    {
+      "filename" : "Icon-1024.png",
+      "unassigned" : true
     }
   ],
   "info" : {

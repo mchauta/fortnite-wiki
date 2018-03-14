@@ -27,7 +27,7 @@ export default {
   async fetchSearchResults(searchTerm) {
     try {
 
-      let response = await fetch(apiHost + 'action=opensearch&format=json&search=' + searchTerm);
+      let response = await fetch(apiHost + 'action=opensearch&redirects=resolve&format=json&search=' + searchTerm);
       let responseJson = await response.json();
       return responseJson;
     } catch (error) {
